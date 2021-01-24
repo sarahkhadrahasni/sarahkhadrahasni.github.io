@@ -2,7 +2,7 @@ let pov;
 
 function setup() {
   createCanvas(1280, 712);
-  pov = createVideo('hearts.webm',1280, 712);
+  pov = createVideo('hearts.mov',1280, 712);
   pov.loop();
   noStroke();
   pov.hide();
@@ -64,7 +64,7 @@ function draw() {
 
 
 function preload() {
-  pov = createVideo("hearts.webm");
+  pov = createVideo("hearts.mov");
   pov.loop()
   pov.hide();
  }

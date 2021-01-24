@@ -1,37 +1,36 @@
-let vid;
+let gif;
 let play = false;
 
-function setup() {
-  createCanvas(400, 400);
-  // noCanvas();
+function preload() {
+  gif = loadImage('sbahn.gif');
+}
 
-  vid = createVideo("sbahn.mov");
-  vid.size(400, 400);
-  vid.volume(0);
-  vid.noLoop();
-  vid.hide(); 
-  vid.pause();
+function setup () {
+  textFont("Helvetica", 16);
+  
+  gif.pause();
 
-  // hides the html video loader
-  // vid.position(0.0);
-
+  
 }
 
 function draw() {
-  let img = vid.get();
-  image(img, 0, 0); // redraws the video frame by frame in  
+  createCanvas (windowWidth, windowHeight)
+  background(255);
+  image(gif, 0, 0);
   
-            if (mouseIsPressed)
-{
+              if (mouseIsPressed) {
     noStroke();
     fill('magenta');
-  
-      textAlign(CENTER, TOP); 
-
+    textAlign(CENTER, TOP); 
     text('(press any key to send a SBahn message)', 0, height/2, width); 
 
     }
 }
+
+//function keyPressed() {
+//  gif.pause();
+//}
+
 function keyPressed() {
-  vid.play();
+  gif.play();
 }

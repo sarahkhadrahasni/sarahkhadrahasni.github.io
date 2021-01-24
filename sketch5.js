@@ -1,6 +1,6 @@
 let text1 = "..."
-  +"Feeling lonely?"
-  +"\n Want to try contacting civilisation?";
+  +"Does this feel lonely?"
+  +"\n...Try contacting the outside world.\n Let's send a message...";
 
 
 let text2 = 

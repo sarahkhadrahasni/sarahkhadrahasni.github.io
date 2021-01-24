@@ -1,6 +1,6 @@
 //Array for images
 
-var images = ["fogarray.gif","fogarray.gif"];
+var images = ["fogarray2.gif","fogarray1.gif"];
 var chosenImage;
 var pos;
 function preload(){

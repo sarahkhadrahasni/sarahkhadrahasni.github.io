@@ -1,76 +1,103 @@
+//array of dancing me
 
-var brush = [];
+let img;
+const gifs = [];				// an array of images
+var particles = [];		// Particle object array
 
-function setup() {
-	createCanvas(windowWidth, windowHeight);
 
-	background(255);
-	for (var i = 0; i < 50; i++) {
-		brush[i] = new Brush();
+function preload() {
+  gifs[0] = img = createImg('dancingme1.gif');
+         img.hide();
 
-	}
+  gifs[1] = img = createImg('dancingme2.gif');
+         img.hide();
+
+  gifs[2] = img = createImg('dancingme3.gif');
+         img.hide();
+
+  gifs[3] = img = createImg('dancingme4.gif');
+         img.hide();
+
+
 }
+
+function setup() { 
+  img_elt = select('.gifs');
+  createCanvas(windowWidth-10, windowHeight-10);
+  imageMode(CENTER);
+  img = gifs.length + 1;
+} 
 
 function draw() {
-
-  if (keyIsDown) 
- for (var i = 0; i < brush.length; i++) {
-
-		brush[i].paint();
-	  brush[i].update();
-  if (mouseIsPressed)
+  
+    if (mouseIsPressed)
     {
     textSize(20); 
-    fill('white'); 
+    fill('magenta'); 
     noStroke();
     textAlign(CENTER, BOTTOM); 
-    text('Emotionally speaking,\n I am inside a fog machine,\n the music is too loud \n and I cant find my friends.', 0, height/2, width); 
+    text('Is it normal to enjoy the isolation?\n [press any key to populate the area]', 0, height/2, width); 
   }
-	}
+    // iterate over the array and display the objects
+  for (var i = particles.length-1; i >= 0; i--) {
+  	particles[i].show();
+  	particles[i].shake();
+    
+    // when the object moves out of the canvas, delete the object 
+    // from the array
+    if (particles[i].y > height) {
+    	particles.splice(i,1);
+    }
+    
+    // keep the number of particles on the canvas under 80 
+    if (particles.length > 80) {
+      particles.shift();
+    }
+  }
+  
+}
+
+function keyPressed() {
+      //if the key is a s
+
+  // when mouse is dragged add a new object to the end of the array
+  // the content of the object is an image randomly selected from the face[] array
+	var newParticle = new Particle(gifs[round(random(0,2))], mouseX, mouseY, random(5,80), random(1, 5));
+	particles.push(newParticle);
+
+  
+
+  
+}
+
+// object declaration - constructor function
+function Particle(t, x, y, si, sp) {
+  this.content = t;
+	this.x = x; 
+  this.y = y;
+  this.size = si;
+  this.speed = sp;
+
+}
+
+// object methods
+Particle.prototype = {
+	constructor: Particle,
+  
+  // display the object
+  show: function() {
+    image( this.content, this.x, this.y, this.size, this.size);
+
+
+  },
+
+  
+  // move the object around its (x, y) position
+  shake: function() {
+  	this.x += random(-5, 5);
+    this.y += random(-5, 5);
+  }
 }
 
 
 
-function Brush() {
-	this.x = random(width);
-	this.y = random(height);
-	this.angle = random(TWO_PI);
-
-  this.clr = color(random(255), random(255), random(255), 5);
-
-	this.paint = function() {
-
-		var px = mouseX;
-		var py = mouseY;
-		var r = 10;
-		var u = random(0.425, 1);
-
-		fill(this.clr);
-		noStroke();
-		beginShape();
-		for (var a = 0; a < TWO_PI; a += PI / 180) {
-			vertex(px, py);
-			px = this.x + r * cos(this.angle + a) * u;
-			py = this.y + r * sin(this.angle + a) * u;
-			r += sin(a * random(0.25, 2));
-		}
-		endShape();
-
-	};
-
-	// Increment angle variable by PI/2 when x or y hits boundaries
-	this.change = function() {
-		if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
-			this.angle += HALF_PI;
-		}
-	};
-
-	this.update = function() {
-
-
-		this.x += 2 * cos(this.angle);
-		this.y += 2 * sin(this.angle);
-		this.angle += random(-0.15, 0.15);
-	};
-
-}

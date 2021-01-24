@@ -5,7 +5,7 @@ function setup() {
   createCanvas(400, 400);
   // noCanvas();
 
-  vid = createVideo("sbahn.mp4");
+  vid = createVideo("sbahn.webm");
   vid.size(400, 400);
   vid.volume(0);
   vid.noLoop();

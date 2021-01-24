@@ -35,4 +35,3 @@ function draw() {
 function keyPressed() {
   vid.play();
 }
-

@@ -2,7 +2,7 @@ let pov;
 
 function setup() {
   createCanvas(800, 466);
-  pov = createVideo('pov.webm',600, 400);
+  pov = createVideo('pov.mov',600, 400);
   pov.loop();
   noStroke();
   pov.hide();
@@ -58,7 +58,7 @@ function draw() {
 }
 
 function preload() {
-  pov = createVideo("pov.webm");
+  pov = createVideo("pov.mov");
   pov.loop()
   pov.hide();
  }

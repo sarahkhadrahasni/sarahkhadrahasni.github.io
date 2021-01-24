@@ -1,5 +1,5 @@
-let giphy, url = 'https://media.giphy.com/media/m4hVBHp2apyuqf2o0G/giphy.gif',
-    
+let giphy, url = 'https://i.imgur.com/xwoaY3K.gif',
+//let giphy, url = 'https://media.giphy.com/media/m4hVBHp2apyuqf2o0G/giphy.gif',    
       
 
   isGifAtEnd = false;

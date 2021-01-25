@@ -3,30 +3,26 @@ let text1 = "..."
 let text2 = 
   "\n next page unlocked";
 
-
 let counter = 0;
-let counter2 = 10;
-
 let isPressed = false;
  
 function setup() {
   createCanvas(windowWidth, windowHeight);
   //frameRate()(20);
   smooth();
-  textSize(10);
-  textFont("Arial");
-
+  textFont("Arial", 35);
 
 }
- 
+
+function mousePressed(){
+  
+ textFont("Arial", 10);
+ text("(press any key to continue)", 0, 20);
+
+}
+
 function draw() {
-  
-        if (mouseIsPressed){
-    textFont("Arial");
-    text("(press any key to continue)", 0, 190);
-
-  
-}
+   textFont("Arial", 35);
    fill('magenta');
   //if (counter < text1.length())
  
@@ -34,17 +30,9 @@ function draw() {
   //counter++;
   text(text1.substring(0, counter), 0, 40, 
     width-20, height);
-  
+
   if (keyIsPressed) {
               counter++;
-      textFont("Arial", 10);
-      text(text2.substring(0, counter), 0, 180, 
-    width-20, height);
-     textSize(35);
-
-    
-    
-    
   }
 
   
@@ -55,7 +43,3 @@ function keyPressed() {
   
 
 }
- 
-//function mouseReleased() {
-//  isPressed= false;
-//}

@@ -24,8 +24,16 @@ function setup() {
   textFont("Arial", 35);
 
 }
- 
+
+function mousePressed(){
+  
+ textFont("Arial", 10);
+ text("(press any key to continue)", 0, 20);
+
+}
+
 function draw() {
+   textFont("Arial", 35);
    fill('magenta');
   //if (counter < text1.length())
  
@@ -46,7 +54,3 @@ function keyPressed() {
   
 
 }
- 
-//function mouseReleased() {
-//  isPressed= false;
-//}

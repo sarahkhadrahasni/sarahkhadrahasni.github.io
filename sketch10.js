@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  	background(255);
+  	background('magenta');
   
           if (mouseIsPressed)
 {

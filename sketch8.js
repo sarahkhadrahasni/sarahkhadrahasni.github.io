@@ -17,7 +17,7 @@ function setup() {
   smooth();
   textSize(10);
   textFont("Arial");
-      fill('#100'); 
+      fill('magenta'); 
 
 
 

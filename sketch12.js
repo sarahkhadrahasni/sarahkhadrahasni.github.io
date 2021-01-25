@@ -4,7 +4,7 @@ var brush = [];
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 
-	background(255);
+	background('#0f0');
 	for (var i = 0; i < 50; i++) {
 		brush[i] = new Brush();
 
@@ -24,7 +24,7 @@ function draw() {
     fill('white'); 
     noStroke();
     textAlign(CENTER, BOTTOM); 
-    text('Emotionally speaking,\n I am inside a fog machine,\n the music is too loud \n and I cant find my friends.', 0, height/2, width); 
+    text('Emotionally speaking,\n I am inside a fog machine.\n The music is too loud, \n and I cant find my friends.', 0, height/2, width); 
   }
 	}
 }

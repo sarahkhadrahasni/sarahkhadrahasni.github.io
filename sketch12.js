@@ -1,63 +1,76 @@
-let text1 = "..."
-  +"Das herz lügt nicht."
 
-let text2 = 
-  "\n next page unlocked";
+var brush = [];
 
-
-let counter = 0;
-let counter2 = 10;
-
-let isPressed = false;
- 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background('#0f0');
-  //frameRate()(20);
-  smooth();
-  textSize(10);
-  textFont("Arial");
+	createCanvas(windowWidth, windowHeight);
 
+	background(255);
+	for (var i = 0; i < 50; i++) {
+		brush[i] = new Brush();
 
+	}
 }
- 
+
 function draw() {
-  
-    if (mouseIsPressed){
-    textFont("Arial");
-    text("(press any key to continue)", 0, 190);
 
-  
-}
-   fill('#fff');
-  //if (counter < text1.length())
- 
-  //text(text1.substring(0, counter), 0, 40, width, height);
-  //counter++;
-  text(text1.substring(0, counter), 0, 40, 
-    width-20, height);
-  
-  if (keyIsPressed) {
-              counter++;
-      textFont("Arial", 10);
-      text(text2.substring(0, counter), 0, 180, 
-    width-20, height);
-     textSize(35);
+  if (keyIsDown) 
+ for (var i = 0; i < brush.length; i++) {
 
-    
-    
-    
+		brush[i].paint();
+	  brush[i].update();
+  if (mouseIsPressed)
+    {
+    textSize(20); 
+    fill('white'); 
+    noStroke();
+    textAlign(CENTER, BOTTOM); 
+    text('Emotionally speaking,\n I am inside a fog machine,\n the music is too loud \n and I cant find my friends.', 0, height/2, width); 
   }
-
-  
+	}
 }
- 
-function keyPressed() {
-  isPressed = !isPressed;
-  
+
+
+
+function Brush() {
+	this.x = random(width);
+	this.y = random(height);
+	this.angle = random(TWO_PI);
+
+  this.clr = color(random(255), random(255), random(255), 5);
+
+	this.paint = function() {
+
+		var px = mouseX;
+		var py = mouseY;
+		var r = 10;
+		var u = random(0.425, 1);
+
+		fill(this.clr);
+		noStroke();
+		beginShape();
+		for (var a = 0; a < TWO_PI; a += PI / 180) {
+			vertex(px, py);
+			px = this.x + r * cos(this.angle + a) * u;
+			py = this.y + r * sin(this.angle + a) * u;
+			r += sin(a * random(0.25, 2));
+		}
+		endShape();
+
+	};
+
+	// Increment angle variable by PI/2 when x or y hits boundaries
+	this.change = function() {
+		if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+			this.angle += HALF_PI;
+		}
+	};
+
+	this.update = function() {
+
+
+		this.x += 2 * cos(this.angle);
+		this.y += 2 * sin(this.angle);
+		this.angle += random(-0.15, 0.15);
+	};
 
 }
- 
-//function mouseReleased() {
-//  isPressed= false;
-//}

@@ -1,17 +1,21 @@
-var gif_createImg;
+//Array for images
 
-function preload() {
-  gif_createImg = createImg("hearts.gif");
+var images = ["fog.gif","hearts.gif"];
+var chosenImage;
+var pos;
+function preload(){
+      pos= floor( random(images. length));
+    // chosenImage= loadImage(images[pos]);
+    chosenImage= createImg(images[pos]);
 }
-
 function setup() {
-}
-
-function draw() {
-  // loads only first frame
+    createCanvas(windowWidth, windowHeight);
+ 
   
-  // updates animation frames by using an html
-  // img element, positioning it over top of
-  // the canvas.
-  gif_createImg.position(0, 0);
+   
+}
+function draw() {
+  // background(255)
+ 
+    
 }

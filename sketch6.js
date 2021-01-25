@@ -1,36 +1,60 @@
-let gif;
-let play = false;
+let giphy, url = 'https://media.giphy.com/media/Gtt48onglwFIPYuUm9/giphy.gif',
+    
+      
+
+  isGifAtEnd = false;
+
+//let cols = 5;
+//let rows = 5;
+//let img;
 
 function preload() {
-  gif = loadImage('sbahn.gif');
+  giphy = loadImage(url);
 }
 
-function setup () {
-  textFont("Helvetica", 16);
-  
-  gif.pause();
+function setup() {
+  createCanvas(windowWidth,windowHeight);
+  //img = loadImage("bgtile.png");
+  imageMode(CENTER);
+  fill(33);
+  textSize(27);
+  textAlign(CENTER, CENTER);
+  giphy.setFrame(giphy.numFrames() - 1);
 
-  
+  // console.log(giphy.numFrames());
 }
 
 function draw() {
-  createCanvas (windowWidth, windowHeight)
-  background(255);
-  image(gif, 0, 0);
   
-              if (mouseIsPressed) {
+//    for (var y=0; y < rows; y++){
+//    for (var x = 0; x < cols; x++){
+//      image (img, x*img.width, y*img.height);
+//    }
+//  }
+  clear();
+  imageMode(CORNER);
+  image(giphy, 400, 100);  gifState();
+  if (mouseIsPressed)  {
+    textSize(20); 
+    fill('magenta'); 
     noStroke();
-    fill('magenta');
     textAlign(CENTER, TOP); 
-    text('(press any key to send a SBahn message)', 0, height/2, width); 
+  text('(press the "S" key to send a SBahn message)', 0, height/2, width); 
+    
+    
+  }
 
-    }
 }
 
-//function keyPressed() {
-//  gif.pause();
-//}
+function gifState() {
+  isGifAtEnd = false;
+  if (giphy.getCurrentFrame() >= giphy.numFrames() - 1) {
+    isGifAtEnd = true;
+    giphy.pause();
+  }
+}
 
 function keyPressed() {
-  gif.play();
+    if (keyCode === 83)
+  if (isGifAtEnd) giphy.reset();
 }

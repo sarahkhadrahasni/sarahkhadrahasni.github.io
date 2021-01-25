@@ -1,64 +1,64 @@
-var 
-	imgLib = 'https://res.cloudinary.com/sarahsarahsarah/image/upload/',
-	imgArray = ['v1610900874/sarahsarahsarah/crowdarray/crowd2_o9kqy9.png','v1610900873/sarahsarahsarah/crowdarray/crowd1_nyddgl.png',
-'v1610900868/sarahsarahsarah/crowdarray/crowd3_isofwp.png','v1610900855/sarahsarahsarah/crowdarray/crowd4_cjgbdn.png'],
+let text1 = "..."
+  +"After a while, you start becoming the other."
+  +"\n and it doesn't feel so lonely anymore...";
 
-	img, dx, dy,
-	pixels = [],
-	r = Math.floor(Math.random() * imgArray.length),
 
-	imgNew = new Image();
+let text2 = 
+  "\n next page unlocked";
 
-// Pick an image
-imgNew.src = imgLib+imgArray[r];
 
+let counter = 0;
+let counter2 = 10;
+
+let isPressed = false;
+ 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //createCanvas(imgNew.naturalWidth, imgNew.naturalHeight);
-  img = loadImage(imgNew.src); 
-  background(0); //black canvas
-  noStroke(); //no outline
-  
-  
-  for (var i=0; i<5000; i++){
-    pixels.push(new pixel());
-  }
+  background('#0f0');
+  //frameRate()(20);
+  smooth();
+  textSize(10);
+  textFont("Arial");
+
+
 }
-
-function draw(){
-
-    if (mouseIsPressed)
-    {
-    textSize(20); 
-    fill('white'); 
-    noStroke();
-    textAlign(CENTER, BOTTOM); 
-    text('Hey there,\n Could you help me remember something?\n Show me a crowd. \n (Press and hold any key to continue.)', 0, height/2, width); 
-  }
+ 
+function draw() {
   
-if (keyIsPressed)
-{
-  for (var i=0; i<pixels.length; i++){
-    pixels[i].update();
+    if (mouseIsPressed){
+    textFont("Arial");
+    text("(press any key to continue)", 0, 190);
+
+}
+   fill('#fff');
+  //if (counter < text1.length())
+ 
+  //text(text1.substring(0, counter), 0, 40, width, height);
+  //counter++;
+  text(text1.substring(0, counter), 0, 40, 
+    width-20, height);
+  
+  if (keyIsPressed) {
+              counter++;
+      textFont("Arial", 10);
+      text(text2.substring(0, counter), 0, 180, 
+    width-20, height);
+     textSize(35);
+
+    
+    
     
   }
-}
-}
 
-function pixel(){
-  this.x = random(width); //random initial position
-  this.y = random(height); 
   
-  this.update = function(){
-    dx = random(-1, 1); //random ∆x
-    dy = random(-1, 1); //random ∆y
-    this.x += dx;
-    this.x= constrain(this.x,0,width);
-    this.y += dy;
-    this.y = constrain(this.y,0,height);
-
-    var color = img.get(this.x, this.y); // color of pixel in image
-    fill(color);
-    ellipse(this.x, this.y, 2, 2);
-  }
 }
+ 
+function keyPressed() {
+  isPressed = !isPressed;
+  
+
+}
+ 
+//function mouseReleased() {
+//  isPressed= false;
+//}
